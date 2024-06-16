@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify
 from app.services.user_service import UserService
-from app.models.user import User
 
 user_blueprint = Blueprint('user_blueprint', __name__)
 user_service = UserService()
@@ -37,3 +36,10 @@ def delete_user(user_id):
     if success:
         return jsonify({'message': 'User deleted'}), 200
     return jsonify({'message': 'User not found'}), 404
+
+@user_blueprint.route('/users/<int:user_id>/verify', methods=['POST'])
+def verify_password(user_id):
+    password = request.json.get('password')
+    if user_service.verify_password(user_id, password):
+        return jsonify({'message': 'Password is correct'}), 200
+    return jsonify({'message': 'Password is incorrect'}), 400

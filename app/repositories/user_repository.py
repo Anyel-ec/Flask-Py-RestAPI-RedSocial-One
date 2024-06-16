@@ -1,9 +1,12 @@
 class UserRepository:
     def __init__(self):
         self.users = []
+        self.next_id = 1
 
     def add_user(self, user):
+        user.id = self.next_id  # Asigna el ID
         self.users.append(user)
+        self.next_id += 1  # Incrementa el contador de ID
 
     def get_user_by_id(self, user_id):
         for user in self.users:
@@ -19,9 +22,13 @@ class UserRepository:
         if user:
             user.name = user_data.get('name', user.name)
             user.email = user_data.get('email', user.email)
-            user.password = user_data.get('password', user.password)
             user.phone = user_data.get('phone', user.phone)
             user.birthdate = user_data.get('birthdate', user.birthdate)
+            
+            if 'password' in user_data:
+                user.password = user_data['password']
+                user.salt = user_data.get('salt', user.salt)  # Asegúrate de actualizar el salt si se proporciona
+            
             return user
         return None
 
