@@ -1,5 +1,5 @@
 from flask import Flask
-from app.controller.user_controller import user_blueprint
+from app.controllers.user_controller import user_blueprint
 
 app = Flask(__name__)
 app.register_blueprint(user_blueprint, url_prefix='/api')
