@@ -10,3 +10,5 @@ class RestConsumerService:
     
     def count_comments_by_post_id(self, post_id):
         return self.rest_consumer_repository.count_comments_by_post_id(post_id)
+    
+    
