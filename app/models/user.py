@@ -8,13 +8,16 @@ class User:
         self.birthdate = birthdate
         self.salt = salt  # Añade el atributo salt opcional
 
-    def to_dict(self):
-        return {
+    def to_dict(self, include_sensitive=False):
+        user_dict = {
             'id': self.id,
             'name': self.name,
             'email': self.email,
             'phone': self.phone,
-            'birthdate': self.birthdate,
-            'password': self.password,
-            'salt': self.salt  # Incluye el salt en el diccionario de salida
+            'birthdate': self.birthdate
         }
+        if include_sensitive:
+            user_dict['password'] = self.password
+            user_dict['salt'] = self.salt
+        
+        return user_dict

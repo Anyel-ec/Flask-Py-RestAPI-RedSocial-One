@@ -4,11 +4,17 @@ class CategoryRepository:
     def __init__(self):
         self.categories = []
         self.next_id = 1
+        # Agregar 3 categorías predefinidas
+        self.add_category(Category(name='Technology', description='Todo sobre lo último en tecnología.'))
+        self.add_category(Category(name='Health', description='Consejos y noticias sobre salud y bienestar.'))
+        self.add_category(Category(name='Lifestyle', description='Artículos sobre estilo de vida y vivir.'))
+
 
     def add_category(self, category):
         category.id = self.next_id
         self.categories.append(category)
         self.next_id += 1
+        
 
     def get_category_by_id(self, category_id):
         for category in self.categories:

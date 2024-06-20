@@ -55,3 +55,14 @@ class UserService:
             if hashed_password == user.password:
                 return True
         return False
+    
+    def verify_password_with_email(self, email, password):
+        for user in self.user_repository.get_all_users():
+            if user.email == email:
+                hashed_password = sha256((user.salt + password).encode()).hexdigest()
+                if hashed_password == user.password:
+                    return True
+        return False
+    
+    def get_user_by_email(self, email):
+        return self.user_repository.get_user_by_email(email)

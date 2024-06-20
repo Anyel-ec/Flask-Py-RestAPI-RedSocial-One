@@ -43,3 +43,20 @@ def verify_password(user_id):
     if user_service.verify_password(user_id, password):
         return jsonify({'message': 'Password is correct'}), 200
     return jsonify({'message': 'Password is incorrect'}), 400
+
+@user_blueprint.route('/users/verify', methods=['POST'])
+def verify_password_with_email():
+    email = request.json.get('email')
+    password = request.json.get('password')
+    if user_service.verify_password_with_email(email, password):
+        return jsonify({'message': 'Password is correct'}), 200
+    return jsonify({'message': 'Password is incorrect'}), 400
+
+@user_blueprint.route('/user/data', methods=['GET'])
+def get_user_by_email():
+    email = request.args.get('email')
+    user = user_service.get_user_by_email(email)
+    if user:
+        return jsonify(user.to_dict()), 200
+    return jsonify({'message': 'User not found'}), 404
+

@@ -13,6 +13,12 @@ class UserRepository:
             if user.id == user_id:
                 return user
         return None
+    
+    def get_user_by_email(self, email):
+        for user in self.users:
+            if user.email == email:
+                return user
+        return None
 
     def get_all_users(self):
         return self.users
@@ -38,3 +44,5 @@ class UserRepository:
             self.users.remove(user)
             return True
         return False
+    
+
