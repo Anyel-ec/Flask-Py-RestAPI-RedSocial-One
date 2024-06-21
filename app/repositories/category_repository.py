@@ -5,9 +5,9 @@ class CategoryRepository:
         self.categories = []
         self.next_id = 1
         # Agregar 3 categorías predefinidas
-        self.add_category(Category(name='Technology', description='Todo sobre lo último en tecnología.'))
-        self.add_category(Category(name='Health', description='Consejos y noticias sobre salud y bienestar.'))
-        self.add_category(Category(name='Lifestyle', description='Artículos sobre estilo de vida y vivir.'))
+        self.add_category(Category(name='Tecnología', description='Todo sobre lo último en tecnología.'))
+        self.add_category(Category(name='Salud', description='Consejos y noticias sobre salud y bienestar.'))
+        self.add_category(Category(name='Estilo de vida', description='Artículos sobre estilo de vida y vivir.'))
 
 
     def add_category(self, category):
