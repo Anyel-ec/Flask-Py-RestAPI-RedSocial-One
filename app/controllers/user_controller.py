@@ -60,3 +60,12 @@ def get_user_by_email():
         return jsonify(user.to_dict()), 200
     return jsonify({'message': 'User not found'}), 404
 
+@user_blueprint.route('/users/verify_exist', methods=['POST'])
+def verify_exist_user():
+    email = request.json.get('email')
+    if user_service.verify_exist_user(email):
+        return jsonify({'message': 'User exists'}), 200
+    return jsonify({'message': 'User does not exist'}), 404
+
+
+

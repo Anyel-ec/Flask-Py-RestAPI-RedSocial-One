@@ -66,3 +66,8 @@ class UserService:
     
     def get_user_by_email(self, email):
         return self.user_repository.get_user_by_email(email)
+    
+    def verify_exist_user(self, email):
+        return self.user_repository.verify_exist_user(email)
+    
+    

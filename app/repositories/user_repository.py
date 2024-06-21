@@ -45,4 +45,9 @@ class UserRepository:
             return True
         return False
     
+    def verify_exist_user(self, email):
+        for user in self.users:
+            if user.email == email:
+                return True
+        return False
 
