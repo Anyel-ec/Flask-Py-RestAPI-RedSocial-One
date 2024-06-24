@@ -9,8 +9,8 @@ This Flask project provides an API for managing users, posts, and categories, fo
 ## RESULTS
 ## REST CONSUMER
 ### Insomia Flask
-![Alt text](api_docs/docs.PNG)
-![Alt text](api_docs/insomia_flask.PNG)
+![Alt text](api_docs/docs.png)
+![Alt text](api_docs/insomia_flask.png)
 
 ## Features
 
